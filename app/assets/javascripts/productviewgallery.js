@@ -1,22 +1,5 @@
-/**
- * BelVG LLC.
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the EULA
- * that is bundled with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://store.belvg.com/BelVG-LICENSE-COMMUNITY.txt
- *
- *******************************************************************
- * @category   Belvg
- * @package    Belvg_Productviewgallery
- * @version    1.0.1
- * @copyright  Copyright (c) 2010 - 2013 BelVG LLC. (http://www.belvg.com)
- * @license    http://store.belvg.com/BelVG-LICENSE-COMMUNITY.txt
- */
 var jQblvg  = jQuery.noConflict();
-;function prodViewGalleryForm(data, id, element, galleryConf, elImage, elThumbs, playerUrl) {
+function prodViewGalleryForm(data, id, element, galleryConf, elImage, elThumbs, playerUrl) {
     var here = this;
     this.prodId = id;
     this.images = [];
@@ -232,7 +215,6 @@ var jQblvg  = jQuery.noConflict();
     }
 })(jQblvg);
 
-/* (c) 2010-2012 by messer */
 ( function(jQblvg) {
     jQblvg.fn.elScroll = function(options) {
         

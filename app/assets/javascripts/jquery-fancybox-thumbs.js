@@ -1,24 +1,4 @@
- /*!
- * Thumbnail helper for fancyBox
- * version: 1.0.4
- * @requires fancyBox v2.0 or later
- *
- * Usage:
- *     $(".fancybox").fancybox({
- *         thumbs: {
- *             width  : 50,
- *             height : 50
- *         }
- *     });
- *
- * Options:
- *     width - thumbnail width
- *     height - thumbnail height
- *     source - function to obtain the URL of the thumbnail image
- *     position - 'top' or 'bottom'
- *
- */
-;(function ($) {
+(function ($) {
 	//Shortcut for fancyBox object
 	var F = $.fancybox;
 

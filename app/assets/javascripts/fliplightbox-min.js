@@ -1,16 +1,3 @@
-/*!
- * flipLightBox - Responsive Lightbox jQuery Plugin
- * version: 1.0.1
- * @requires jQuery v1.5 or later
- *
- * License at http://flipgallery.net/fliplightbox.html#download
- * 
- * Example at http://flipgallery.net/fliplightbox.html
- *
- * Copyright 2013 flipGallery.net
- *
- */
-
 (function( $ ){
     
 $.fn.flipLightBox = function(flb_options) {
