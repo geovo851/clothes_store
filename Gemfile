@@ -63,5 +63,4 @@ gem 'mini_magick'
 gem 'declarative_authorization', github: "stffn/declarative_authorization"
 
 gem 'kaminari'
-gem 'simple_form', '~> 3.1'
 gem 'tinymce-rails'
