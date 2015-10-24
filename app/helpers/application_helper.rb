@@ -17,4 +17,8 @@ module ApplicationHelper
   def find_role_admin
     User.select('users.name, roles.title').joins(:role).where('roles.title = ?', 'admin').first
   end
+
+  def header_categories
+    categories = Category.first(5)
+  end
 end
