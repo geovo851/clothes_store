@@ -1,36 +1,90 @@
 <% provide(:products, 'active') %>
 <% provide(:title, 'Products') %>
 
-<div class="container-fluid"> 
-  <div class="row">
+<%= render 'shared/slider' %>
+<%= render 'shared/cursual' %>
 
-    <%= render 'shared/side_bar' %>
+<!-- start main1 -->
+<div class="main_bg1">
+  <div class="wrap">  
+    <div class="main1">
+      <h2>featured products</h2>
+    </div>
+  </div>
+</div>
 
-    <div class="col-sm-9 col-md-10">
-
-    <div class="container">
-      <div class="page-header">
-        <h1>Products</h1>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-10 col-md-8 sidebar">
-          <% if @products.empty? %>
-            <b>No products in store</b>
-          <% else %>
-
-            <div class="table-responsive">
-              <table class="table ">
-                <tbody id="products">
-                  <%= render partial: "product", :collection => @products, :as => :product %>
-                </tbody>
-              </table>
+<!-- start main -->
+<div class="main_bg">
+  <div class="wrap">  
+    <div class="main">
+      <!-- start grids_of_3 -->
+      <div class="grids_of_3">
+        <div class="grid1_of_3">
+          <a href="details.html">
+            <%= image_tag "pic1.jpg" %>
+            <h3>branded shoes</h3>
+            <div class="price">
+              <h4>$300<span>indulge</span></h4>
             </div>
-            <div id="paginator", class="paginate-centre"><%= paginate @products, :remote => true %></div>
-          <% end %>
+            <span class="b_btm"></span>
+          </a>
         </div>
+        <div class="grid1_of_3">
+          <a href="details.html">
+            <%= image_tag "pic2.jpg" %>
+            <h3>branded t-shirts</h3>
+            <div class="price">
+              <h4>$300<span>indulge</span></h4>
+            </div>
+            <span class="b_btm"></span>
+          </a>
+        </div>
+        <div class="grid1_of_3">
+          <a href="details.html">
+            <%= image_tag "pic3.jpg" %>
+            <h3>branded tees</h3>
+            <div class="price">
+              <h4>$300<span>indulge</span></h4>
+            </div>
+            <span class="b_btm"></span>
+          </a>
+        </div>
+        <div class="clear"></div>
       </div>
-
+      <div class="grids_of_3">
+        <div class="grid1_of_3">
+          <a href="details.html">
+            <%= image_tag "pic4.jpg" %>
+            <h3>branded bags</h3>
+            <div class="price">
+              <h4>$300<span>indulge</span></h4>
+            </div>
+            <span class="b_btm"></span>
+          </a>
+        </div>
+        <div class="grid1_of_3">
+          <a href="details.html">
+            <%= image_tag "pic5.jpg" %>
+            <h3>ems women bag</h3>
+            <div class="price">
+              <h4>$300<span>indulge</span></h4>
+            </div>
+            <span class="b_btm"></span>
+          </a>
+        </div>
+        <div class="grid1_of_3">
+          <a href="details.html">
+            <%= image_tag "pic6.jpg" %>
+            <h3>branded cargos</h3>
+            <div class="price">
+              <h4>$300<span>indulge</span></h4>
+            </div>
+            <span class="b_btm"></span>
+          </a>
+        </div>
+        <div class="clear"></div>
+      </div>  
+      <!-- end grids_of_3 -->
     </div>
   </div>
 </div>

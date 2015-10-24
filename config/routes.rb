@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  get 'sale' => 'store#sale', as: 'store_sale'
+
   get 'store/delivery' => 'store#delivery', as: 'store_delivery'
   get 'store/about' => 'store#about', as: 'store_about'
   get 'store/contact' => 'store#contact', as: 'store_contact'

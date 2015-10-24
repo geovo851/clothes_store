@@ -1,5 +1,5 @@
 class StoreController < ApplicationController
-  filter_access_to :all
+  # filter_access_to :all
   include CurrentCart
 
   def index
@@ -49,6 +49,14 @@ class StoreController < ApplicationController
   def contact
     @categories = Category.all
     count_in_cart
+  end
+
+  def sale
+    
+  end
+
+  def services
+    
   end
 
   private
