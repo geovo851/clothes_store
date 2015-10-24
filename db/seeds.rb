@@ -31,11 +31,12 @@ end
 
 
 categories = []
-categories << Category.create(category: "Monitors")
-categories << Category.create(category: "Processors")
-categories << Category.create(category: "Motherboards")
-categories << Category.create(category: "Memory")
-categories << Category.create(category: "Keyboards")
+categories << Category.create(category: "Handbags")
+categories << Category.create(category: "Accessories")
+categories << Category.create(category: "Wallets")
+categories << Category.create(category: "Shoes")
+categories << Category.create(category: "Shirts")
+categories << Category.create(category: "Dresses")
 
 categories.each do |category|
   1.upto(40) do |n|
