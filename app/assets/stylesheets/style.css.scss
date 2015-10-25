@@ -114,7 +114,7 @@ body {
     display: none;
 	cursor: pointer;
     float:left;
-	background: url(nav_icon.png) 18% 52% no-repeat;
+	background: image-url('nav_icon.png') 18% 52% no-repeat;
 	height: 35px;
 	width: 35px;
 }
@@ -156,7 +156,7 @@ body {
 	padding: 5px 0;
 }
 .top-nav-right input[type="submit"]{
-	background: url(search-icon.png) no-repeat 42% 50% #bd7f1c;
+	background: image-url('search-icon.png') no-repeat 42% 50% #bd7f1c;
 	padding:10px 20px;
 	border: none;
 	display: block;
@@ -169,7 +169,7 @@ body {
 	-webkit-transition: 0.5s ease;
 }
 .top-nav-right input[type="submit"]:hover{
-	background: url(search-icon.png) no-repeat 42% 50% #996004;
+	background: image-url('search-icon.png') no-repeat 42% 50% #996004;
 }
 .top-nav-right input[type="text"]{
 	border:none;
@@ -206,7 +206,7 @@ body {
 }
 .search_box form input[type="submit"] {
 	-webkit-appearance: none;
-	background: url('search.png') no-repeat 10px 5px;
+	background: image-url('search.png') no-repeat 10px 5px;
 	padding: 6px 0px;
 	border: none;
 	cursor: pointer;
@@ -370,7 +370,7 @@ body {
 	vertical-align:middle;
 }
 .c1{
-	background: url(cart.png) no-repeat 0px 0px;
+	background: image-url('cart.png') no-repeat 0px 0px;
 	width: 46px;
 	height: 46px;
 	display: inline-block;
@@ -557,7 +557,7 @@ body {
 	height: 34px;
 	border: none;
 	text-indent: 100%;
-	background: url(top_move.png) no-repeat right top;
+	background: image-url('top_move.png') no-repeat right top;
 }
 .copy{
 	text-align:center;
@@ -1267,7 +1267,7 @@ p.para{
 	font-family: 'Source Sans Pro', sans-serif;
 }
 .content ul li:before{
-	content: url('arrow.png');
+	content: image-url('arrow.png');
 	padding-top: 4px;
 	padding-right: 8px;
 	display: inline-block;

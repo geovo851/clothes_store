@@ -6,7 +6,7 @@
 	position: relative;
 	margin: 0px auto;
 	overflow: hidden;
-	background: transparent url(slider_bg.jpg) repeat 0% 0%;
+	background: transparent image-url('slider_bg.jpg') repeat 0% 0%;
 	box-shadow: 0px 1px 1px rgba(0,0,0,0.2), 0px -1px 4px #32AC9D;
 	-webkit-box-shadow: 0px 1px 1px rgba(0,0,0,0.2), 0px -1px 4px #32AC9D;
 	-moz-box-shadow: 0px 1px 1px rgba(0,0,0,0.2), 0px -1px 4px #32AC9D;
@@ -194,7 +194,7 @@
 	height: 23px;
 	top: 5px;
 	left: 5px;
-	background: transparent url(arrows.png) no-repeat top left;
+	background: transparent image-url('arrows.png') no-repeat top left;
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
