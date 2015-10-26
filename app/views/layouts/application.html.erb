@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <title><%= yield(:title)%> | Electronics store</title>
+  <title><%= yield(:title)%> | Clothes store</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -9,6 +9,10 @@
   <body>
 
     <%= render 'shared/header' %>
+
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "wrap alert #{bootstrap_class_for(key)} flash") %>
+    <% end %>
 
     <%= yield %>
 

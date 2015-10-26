@@ -2,7 +2,7 @@
   <div class="wrap">
     <div class="header">
       <div class="logo">
-        <a href="index.html"><%= image_tag "logo.png" %></a>
+        <%= link_to image_tag("logo.png"), root_path %>
       </div>
       <div class="h_icon">
         <ul class="icon1 sub-icon1">
@@ -39,33 +39,13 @@
                           class: "#{yield(category_id)}" %>
             </li> |
           <% end %>
-          <li><a href="service.html">services</a></li> |
-          <li><a href="contact.html">Contact us</a></li>
+          <li><%= link_to 'services', store_services_path %></li> |
+          <li><%= link_to 'Contact us', store_contact_path %></li>
         </ul>
       </div>
-      <div class="top-nav">
-        <nav class="nav">
-          <a href="#" id="w3-menu-trigger"></a>
-          <ul class="nav-list" style="">
-            <li class="nav-item"><a class="active" href="index.html">Home</a></li>
-            <li class="nav-item"><a href="sale.html">Sale</a></li>
-            <li class="nav-item"><a href="handbags.html">Handbags</a></li>
-            <li class="nav-item"><a href="accessories.html">Accessories</a></li>
-            <li class="nav-item"><a href="shoes.html">Shoes</a></li>
-            <li class="nav-item"><a href="service.html">Services</a></li>
-            <li class="nav-item"><a href="contact.html">Contact</a></li>
-          </ul>
-        </nav>
-        <div class="search_box">
-          <form>
-            <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
-            <input type="submit" value="">
-          </form>
-        </div>
-        <div class="clear"> </div>
-        <script src="js/responsive.menu.js"></script>
-      </div>
-      <div class="clear"></div>
+      <div class="clear"> </div>
     </div>
+    <div class="clear"></div>
   </div>
 </div>
+

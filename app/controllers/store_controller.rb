@@ -41,14 +41,10 @@ class StoreController < ApplicationController
     count_in_cart
   end
 
-  def about
-    @categories = Category.all
-    count_in_cart
-  end
-
   def contact
     @categories = Category.all
     count_in_cart
+    @message = Message.new
   end
 
   def sale
@@ -56,7 +52,6 @@ class StoreController < ApplicationController
   end
 
   def services
-    
   end
 
   private
