@@ -25,9 +25,9 @@ class StoreController < ApplicationController
   end
 
   def search_products
-    @products = Product.where(category_id: params[:id]).page(params[:page]).per(10)
+    @products = Product.where(category_id: params[:id]).page(params[:page]).per(9)
 
-    @categories = Category.all
+    @category = Category.find(params[:id])
     @category_id = "category_#{params[:id]}"
 
     respond_to do |format|
@@ -36,19 +36,10 @@ class StoreController < ApplicationController
     end
   end
 
-  def delivery
-    @categories = Category.all
-    count_in_cart
-  end
-
   def contact
     @categories = Category.all
     count_in_cart
     @message = Message.new
-  end
-
-  def sale
-    
   end
 
   def services
