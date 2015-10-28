@@ -16,16 +16,12 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  get 'sale' => 'store#sale', as: 'store_sale'
   get 'services' => 'store#services', as: 'store_services'
   get 'contact' => 'store#contact', as: 'store_contact'
 
-  get 'store/delivery' => 'store#delivery', as: 'store_delivery'
-  get 'store/about' => 'store#about', as: 'store_about'
-  
   get 'store/cart/:id' => 'store#cart', as: 'store_cart'
-  get 'store/search/:id' => 'store#search_products', as: 'store_search_products'
-  get 'store/show/:id' => 'store#show', as: 'store_show_product'
+  get 'search/:id' => 'store#search_products', as: 'store_search_products'
+  get 'product/:id' => 'store#product', as: 'store_product'
 
   root 'store#index'
 end

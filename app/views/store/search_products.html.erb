@@ -4,7 +4,7 @@
 <div class="main_bg">
   <div class="wrap">  
     <div class="main">
-      <h2 class="style top">featured wallets</h2>
+      <h2 class="style top"><%= "featured #{@category.category}" %></h2>
 
       <% if @products.empty? %>
         <b>Products not found</b>

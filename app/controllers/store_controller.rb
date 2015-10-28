@@ -14,7 +14,7 @@ class StoreController < ApplicationController
     end
   end
   
-  def show
+  def product
     @product = Product.find(params[:id])
     count_in_cart
     @categories = Category.all
