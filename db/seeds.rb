@@ -38,12 +38,21 @@ categories << Category.create(category: "Shoes")
 categories << Category.create(category: "Shirts")
 categories << Category.create(category: "Dresses")
 
-categories.each do |category|
-  1.upto(40) do |n|
-    Product.create(name: "#{category.category} #{n}",
-                 description: "Best #{category.category} #{n}!!!",
-                 category_id: category.id,
-                 price: n * 120.35,
-                 available: true)
-  end
-end
+product = Product.create(name: 'Handbags 9',description: 'Accessories', category_id: categories[0].id, price: 500)
+
+product.photos.create(orig: '0001-2.jpg', large: 'large/0001-2.jpg', small: 'small/0001-2.jpg')
+product.photos.create(orig: '0001-1.jpg', large: 'large/0001-1.jpg', small: 'small/0001-1.jpg')
+product.photos.create(orig: '0001-3.jpg', large: 'large/0001-3.jpg', small: 'small/0001-3.jpg')
+product.photos.create(orig: '0001-4.jpg', large: 'large/0001-4.jpg', small: 'small/0001-4.jpg')
+product.photos.create(orig: '0001-5.jpg', large: 'large/0001-5.jpg', small: 'small/0001-5.jpg')
+
+
+product = Product.create(name: 'Handbags',description: 'Accessories', category_id: categories[0].id, price: 500)
+
+product.photos.create(orig: '0001-2.jpg', large: 'large/0001-2.jpg', small: 'small/0001-2.jpg')
+product.photos.create(orig: '0001-1.jpg', large: 'large/0001-1.jpg', small: 'small/0001-1.jpg')
+product.photos.create(orig: '0001-3.jpg', large: 'large/0001-3.jpg', small: 'small/0001-3.jpg')
+product.photos.create(orig: '0001-4.jpg', large: 'large/0001-4.jpg', small: 'small/0001-4.jpg')
+product.photos.create(orig: '0001-5.jpg', large: 'large/0001-5.jpg', small: 'small/0001-5.jpg')
+
+product = Product.create(name: 'Handbags5',description: 'Accessories', category_id: categories[0].id, price: 500)
