@@ -3,6 +3,7 @@ class Product < ActiveRecord::Base
   Sizes = ['L', 'XL', 'S', 'M']
 
   belongs_to :category
+  belongs_to :brand
   has_many :products_orders
   has_many :orders, through: :products_orders
   has_many :photos, dependent: :destroy
