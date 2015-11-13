@@ -62,5 +62,7 @@ gem 'mini_magick'
 
 gem 'declarative_authorization', github: "stffn/declarative_authorization"
 
-gem 'kaminari'
+# gem 'kaminari'
 gem 'tinymce-rails'
+
+gem 'activeadmin', '1.0.0.pre1'
