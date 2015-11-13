@@ -43,7 +43,8 @@ et dolore magna aliqua.</p>'
 brands_men = []
 brands_men << Brand.create(title: 'Hugo Boss', description: '<h3>Hugo Boss</h3>' + description_brand,
                            gender: Brand::Genders[0])
-brands_men << Brand.create(title: 'Louis Vuitton', description: '<h3>Hugo Boss</h3>' + description_brand,
+
+brands_men << Brand.create(title: 'Louis Vuitton', description: '<h3>Louis Vuitton</h3>' + description_brand,
                            gender: Brand::Genders[0])
 brands_men << Brand.create(title: 'Brooks Brothers', description: '<h3>Brooks Brothers</h3>' + description_brand,
                            gender: Brand::Genders[0])
@@ -57,8 +58,30 @@ brands_men << Brand.create(title: 'Dolce & Gabbana', description: '<h3>Dolce & G
                            gender: Brand::Genders[0])
 brands_men << Brand.create(title: 'French Connection', description: '<h3>French Connection</h3>' + description_brand,
                            gender: Brand::Genders[0])
-brands_men << Brand.create(title: 'Hollister Co.', description: '<h3>Hollister Co.</h3>' + description_brand,
+
+brands_men << Brand.create(title: 'Hollister.', description: '<h3>Hollister</h3>' + description_brand,
                            gender: Brand::Genders[0])
+
+brands_women = []
+brands_women << Brand.create(title: 'Kate Spade', description: '<h3>Kate Spade</h3>' + description_brand,
+                           gender: Brand::Genders[1])
+brands_women << Brand.create(title: 'Badgley Mischka', description: '<h3>Badgley Mischka</h3>' + description_brand,
+                           gender: Brand::Genders[1])
+brands_women << Brand.create(title: 'Betsey Johnson LLC', description: '<h3>Betsey Johnson LLC</h3>' + description_brand,
+                           gender: Brand::Genders[1])
+brands_women << Brand.create(title: 'John Galliano', description: '<h3>John Galliano</h3>' + description_brand,
+                           gender: Brand::Genders[1])
+brands_women << Brand.create(title: 'Nicole Miller', description: '<h3>Nicole Miller</h3>' + description_brand,
+                           gender: Brand::Genders[1])
+brands_women << Brand.create(title: 'Victoria\'s Secret', description: '<h3>Victoria\'s Secret</h3>' + description_brand,
+                           gender: Brand::Genders[1])
+brands_women << Brand.create(title: 'Karl Lagerfeld', description: '<h3>Karl Lagerfeld</h3>' + description_brand,
+                           gender: Brand::Genders[1])
+brands_women << Brand.create(title: 'Roberto Cavalli', description: '<h3>Roberto Cavalli</h3>' + description_brand,
+                           gender: Brand::Genders[1])
+
+brands_women << Brand.create(title: 'Roberto', description: '<h3>Roberto</h3>' + description_brand,
+                           gender: Brand::Genders[1])
 
 categories = []
 categories << Category.create(category: "Men's Outerwear")
@@ -67,11 +90,6 @@ categories << Category.create(category: "Men's Shoes")
 
 categories << Category.create(category: "Women's Outerwear")
 categories << Category.create(category: "Women's Dresses")
-categories << Category.create(category: "Women's Shoes")
-
-
-categories << Category.create(category: "Wallets")
-
 
 
 description_product = '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -91,46 +109,49 @@ def add_photo product_photos, photo, photo_small
   product_photos.create(orig: photo, large: photo, small: photo_small)
 end
 
+def brand_id n, brands, i
+  n == 2 ? brands[8].id : brands[i].id
+end
 # Outerwear Men
 1.upto(2) do |n|
   # First Outerwear
   product = Product.create(name: 'Double Breasted Pocket Hemming Slimming Hooded',
-                           category_id: categories[0].id, brand_id: brands_men[0].id, 
+                           category_id: categories[0].id, brand_id: brand_id(n, brands_men, 0), 
                            price: 54 * n, photo: 'outerwear_small_1.jpg',
                            description: description_product)
 
   add_photo product.photos, 'outerwear_1.jpg', 'outerwear_small_1.jpg'
 
   product = Product.create(name: 'Turn-Down Collar Double-Breasted Long Sleeve',
-                           category_id: categories[0].id, brand_id: brands_men[0].id, 
+                           category_id: categories[0].id, brand_id: brand_id(n, brands_men, 0), 
                            price: 25 * n, photo: 'outerwear_small_2.jpg',
                            description: description_product)
 
   add_photo product.photos, 'outerwear_2.jpg', 'outerwear_small_2.jpg'
 
   product = Product.create(name: 'Laconic Stand Collar Patch Pocket Solid Color Slimming',
-                           category_id: categories[0].id, brand_id: brands_men[0].id, 
+                           category_id: categories[0].id, brand_id: brand_id(n, brands_men, 1), 
                            price: 36 * n, photo: 'outerwear_small_3.jpg',
                            description: description_product)
 
   add_photo product.photos, 'outerwear_3.jpg', 'outerwear_small_3.jpg'
 
   product = Product.create(name: 'Slimming Drawstring Wool Collar Multi-Button Flap Pocket',
-                           category_id: categories[0].id, brand_id: brands_men[0].id, 
+                           category_id: categories[0].id, brand_id: brand_id(n, brands_men, 1), 
                            price: 85 * n, photo: 'outerwear_small_4.jpg',
                            description: description_product)
 
   add_photo product.photos, 'outerwear_4.jpg', 'outerwear_small_4.jpg'
 
   product = Product.create(name: 'Color Block Multi-Zipper Stereo Patch Pocket',
-                           category_id: categories[0].id, brand_id: brands_men[0].id, 
+                           category_id: categories[0].id, brand_id: brand_id(n, brands_men, 2), 
                            price: 45 * n, photo: 'outerwear_small_5.jpg',
                            description: description_product)
 
   add_photo product.photos, 'outerwear_5.jpg', 'outerwear_small_5.jpg'
 
   product = Product.create(name: 'Slimming Rib Spliced Button and Epaulet Design Stand Collar',
-                           category_id: categories[0].id, brand_id: brands_men[0].id, 
+                           category_id: categories[0].id, brand_id: brand_id(n, brands_men, 2), 
                            price: 64 * n, photo: 'outerwear_small_6.jpg',
                            description: description_product)
 
@@ -139,43 +160,42 @@ end
 
   #Second Outerwear
   product = Product.create(name: 'Slimming Rib Spliced Button and Epaulet Design Stand Collar',
-                           category_id: categories[0].id, brand_id: brands_men[0].id, 
+                           category_id: categories[0].id, brand_id: brands_men[8].id, 
                            price: 40 * n, photo: 'outerwear_small_6.jpg',
                            description: description_product)
 
   add_photo product.photos, 'outerwear_6.jpg', 'outerwear_small_6.jpg'
 
   product = Product.create(name: 'Color Block Multi-Zipper Stereo Patch Pocket',
-                           category_id: categories[0].id, brand_id: brands_men[0].id, 
+                           category_id: categories[0].id, brand_id: brands_men[8].id, 
                            price: 26 * n, photo: 'outerwear_small_5.jpg',
                            description: description_product)
 
   add_photo product.photos, 'outerwear_5.jpg', 'outerwear_small_5.jpg'
 
   product = Product.create(name: 'Slimming Drawstring Wool Collar Multi-Button Flap Pocket',
-                           category_id: categories[0].id, brand_id: brands_men[0].id, 
+                           category_id: categories[0].id, brand_id: brands_men[8].id, 
                            price: 25 * n, photo: 'outerwear_small_4.jpg',
                            description: description_product)
 
   add_photo product.photos, 'outerwear_4.jpg', 'outerwear_small_4.jpg'
 
   product = Product.create(name: 'Turn-Down Collar Double-Breasted Long Sleeve',
-                           category_id: categories[0].id, brand_id: brands_men[0].id, 
+                           category_id: categories[0].id, brand_id: brands_men[8].id, 
                            price: 22 * n, photo: 'outerwear_small_2.jpg',
                            description: description_product)
 
   add_photo product.photos, 'outerwear_2.jpg', 'outerwear_small_2.jpg'
 
   product = Product.create(name: 'Double Breasted Pocket Hemming Slimming Hooded',
-                           category_id: categories[0].id, brand_id: brands_men[0].id, 
+                           category_id: categories[0].id, brand_id: brands_men[8].id, 
                            price: 20 * n, photo: 'outerwear_small_1.jpg',
                            description: description_product)
 
   add_photo product.photos, 'outerwear_1.jpg', 'outerwear_small_1.jpg'
 
-
   product = Product.create(name: 'Laconic Stand Collar Patch Pocket Solid Color Slimming',
-                           category_id: categories[0].id, brand_id: brands_men[0].id, 
+                           category_id: categories[0].id, brand_id: brands_men[8].id, 
                            price: 31 * n, photo: 'outerwear_small_3.jpg',
                            description: description_product)
 
@@ -185,136 +205,361 @@ end
 # Outerwear Women
 1.upto(2) do |n|
   # First Outerwear
-  product = Product.create(name: 'Double Breasted Pocket Hemming Slimming Hooded',
-                           category_id: categories[0].id, brand_id: brands_men[0].id, 
-                           price: 54 * n, photo: 'outerwear_small_1.jpg',
+  product = Product.create(name: 'Stylish Convertible Collar Long Sleeve Solid Color Zippered',
+                           category_id: categories[3].id, brand_id: brand_id(n, brands_women, 0), 
+                           price: 54 * n, photo: 'outerwear_small_7.jpg',
                            description: description_product)
 
-  add_photo product.photos, 'outerwear_1.jpg', 'outerwear_small_1.jpg'
+  add_photo product.photos, 'outerwear_7.jpg', 'outerwear_small_7.jpg'
 
-  product = Product.create(name: 'Turn-Down Collar Double-Breasted Long Sleeve',
-                           category_id: categories[0].id, brand_id: brands_men[0].id, 
-                           price: 25 * n, photo: 'outerwear_small_2.jpg',
+  product = Product.create(name: 'Stylish Fleece Lined Long Sleeve Hooded',
+                           category_id: categories[3].id, brand_id: brand_id(n, brands_women, 1), 
+                           price: 25 * n, photo: 'outerwear_small_8.jpg',
                            description: description_product)
 
-  add_photo product.photos, 'outerwear_2.jpg', 'outerwear_small_2.jpg'
+  add_photo product.photos, 'outerwear_8.jpg', 'outerwear_small_8.jpg'
 
-  product = Product.create(name: 'Laconic Stand Collar Patch Pocket Solid Color Slimming',
-                           category_id: categories[0].id, brand_id: brands_men[0].id, 
-                           price: 36 * n, photo: 'outerwear_small_3.jpg',
+  product = Product.create(name: 'Stylish Hooded Long Sleeve Solid Color PU',
+                           category_id: categories[3].id, brand_id: brand_id(n, brands_women, 2), 
+                           price: 36 * n, photo: 'outerwear_small_9.jpg',
                            description: description_product)
 
-  add_photo product.photos, 'outerwear_3.jpg', 'outerwear_small_3.jpg'
+  add_photo product.photos, 'outerwear_9.jpg', 'outerwear_small_9.jpg'
 
-  product = Product.create(name: 'Slimming Drawstring Wool Collar Multi-Button Flap Pocket',
-                           category_id: categories[0].id, brand_id: brands_men[0].id, 
-                           price: 85 * n, photo: 'outerwear_small_4.jpg',
+  product = Product.create(name: 'Chic Women\'s Belt Long Sleeve Winter',
+                           category_id: categories[3].id, brand_id: brand_id(n, brands_women, 3), 
+                           price: 85 * n, photo: 'outerwear_small_10.jpg',
                            description: description_product)
 
-  add_photo product.photos, 'outerwear_4.jpg', 'outerwear_small_4.jpg'
+  add_photo product.photos, 'outerwear_10.jpg', 'outerwear_small_10.jpg'
 
-  product = Product.create(name: 'Color Block Multi-Zipper Stereo Patch Pocket',
-                           category_id: categories[0].id, brand_id: brands_men[0].id, 
-                           price: 45 * n, photo: 'outerwear_small_5.jpg',
+  product = Product.create(name: 'Stylish Turn-Down Neck Long Sleeve Spliced',
+                           category_id: categories[3].id, brand_id: brand_id(n, brands_women, 4), 
+                           price: 45 * n, photo: 'outerwear_small_11.jpg',
                            description: description_product)
 
-  add_photo product.photos, 'outerwear_5.jpg', 'outerwear_small_5.jpg'
+  add_photo product.photos, 'outerwear_11.jpg', 'outerwear_small_11.jpg'
 
-  product = Product.create(name: 'Slimming Rib Spliced Button and Epaulet Design Stand Collar',
-                           category_id: categories[0].id, brand_id: brands_men[0].id, 
-                           price: 64 * n, photo: 'outerwear_small_6.jpg',
+  product = Product.create(name: 'Sweet Hooded Batwing Sleeve Wool',
+                           category_id: categories[3].id, brand_id: brand_id(n, brands_women, 5), 
+                           price: 64 * n, photo: 'outerwear_small_12.jpg',
                            description: description_product)
 
-  add_photo product.photos, 'outerwear_6.jpg', 'outerwear_small_6.jpg'
+  add_photo product.photos, 'outerwear_12.jpg', 'outerwear_small_12.jpg'
 
 
   #Second Outerwear
-  product = Product.create(name: 'Slimming Rib Spliced Button and Epaulet Design Stand Collar',
-                           category_id: categories[0].id, brand_id: brands_men[0].id, 
-                           price: 40 * n, photo: 'outerwear_small_6.jpg',
+  product = Product.create(name: 'Sweet Hooded Batwing Sleeve Wool',
+                           category_id: categories[3].id, brand_id: brands_women[8].id, 
+                           price: 40 * n, photo: 'outerwear_small_12.jpg',
                            description: description_product)
 
-  add_photo product.photos, 'outerwear_6.jpg', 'outerwear_small_6.jpg'
+  add_photo product.photos, 'outerwear_12.jpg', 'outerwear_small_12.jpg'
 
-  product = Product.create(name: 'Color Block Multi-Zipper Stereo Patch Pocket',
-                           category_id: categories[0].id, brand_id: brands_men[0].id, 
-                           price: 26 * n, photo: 'outerwear_small_5.jpg',
+  product = Product.create(name: 'Stylish Turn-Down Neck Long Sleeve Spliced',
+                           category_id: categories[3].id, brand_id: brands_women[8].id, 
+                           price: 26 * n, photo: 'outerwear_small_11.jpg',
                            description: description_product)
 
-  add_photo product.photos, 'outerwear_5.jpg', 'outerwear_small_5.jpg'
+  add_photo product.photos, 'outerwear_11.jpg', 'outerwear_small_11.jpg'
 
-  product = Product.create(name: 'Slimming Drawstring Wool Collar Multi-Button Flap Pocket',
-                           category_id: categories[0].id, brand_id: brands_men[0].id, 
-                           price: 25 * n, photo: 'outerwear_small_4.jpg',
+  product = Product.create(name: 'Chic Women\'s Belt Long Sleeve Winter',
+                           category_id: categories[3].id, brand_id: brand_id(n, brands_women, 7), 
+                           price: 25 * n, photo: 'outerwear_small_10.jpg',
                            description: description_product)
 
-  add_photo product.photos, 'outerwear_4.jpg', 'outerwear_small_4.jpg'
+  add_photo product.photos, 'outerwear_10.jpg', 'outerwear_small_10.jpg'
 
-  product = Product.create(name: 'Turn-Down Collar Double-Breasted Long Sleeve',
-                           category_id: categories[0].id, brand_id: brands_men[0].id, 
-                           price: 22 * n, photo: 'outerwear_small_2.jpg',
+  product = Product.create(name: 'Stylish Fleece Lined Long Sleeve Hooded',
+                           category_id: categories[3].id, brand_id: brand_id(n, brands_women, 6), 
+                           price: 22 * n, photo: 'outerwear_small_8.jpg',
                            description: description_product)
 
-  add_photo product.photos, 'outerwear_2.jpg', 'outerwear_small_2.jpg'
+  add_photo product.photos, 'outerwear_8.jpg', 'outerwear_small_8.jpg'
 
-  product = Product.create(name: 'Double Breasted Pocket Hemming Slimming Hooded',
-                           category_id: categories[0].id, brand_id: brands_men[0].id, 
-                           price: 20 * n, photo: 'outerwear_small_1.jpg',
+  product = Product.create(name: 'Stylish Convertible Collar Long Sleeve Solid Color Zippered',
+                           category_id: categories[3].id, brand_id: brand_id(n, brands_women, 5), 
+                           price: 20 * n, photo: 'outerwear_small_7.jpg',
                            description: description_product)
 
-  add_photo product.photos, 'outerwear_1.jpg', 'outerwear_small_1.jpg'
+  add_photo product.photos, 'outerwear_7.jpg', 'outerwear_small_7.jpg'
 
-
-  product = Product.create(name: 'Laconic Stand Collar Patch Pocket Solid Color Slimming',
-                           category_id: categories[0].id, brand_id: brands_men[0].id, 
-                           price: 31 * n, photo: 'outerwear_small_3.jpg',
+  product = Product.create(name: 'Stylish Hooded Long Sleeve Solid Color PU',
+                           category_id: categories[3].id, brand_id: brand_id(n, brands_women, 4), 
+                           price: 31 * n, photo: 'outerwear_small_9.jpg',
                            description: description_product)
 
-  add_photo product.photos, 'outerwear_3.jpg', 'outerwear_small_3.jpg'
+  add_photo product.photos, 'outerwear_9.jpg', 'outerwear_small_9.jpg'
 end
 
 
+# Shirts Men
+1.upto(2) do |n|
+  # First Shirts
+  product = Product.create(name: 'Vogue Shirt Collar Abstract Totem Print Color Block Slimming',
+                           category_id: categories[1].id, brand_id: brand_id(n, brands_men, 3), 
+                           price: 54 * n, photo: 'shirts_small_1.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'shirts_1.jpg', 'shirts_small_1.jpg'
+
+  product = Product.create(name: 'Modern Style Shirt Collar Color Block Totem Print Spliced',
+                           category_id: categories[1].id, brand_id: brand_id(n, brands_men, 3), 
+                           price: 54 * n, photo: 'shirts_small_2.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'shirts_2.jpg', 'shirts_small_2.jpg'
+
+  product = Product.create(name: 'Slimming Trendy Turn-down Collar Checked Print Splicing',
+                           category_id: categories[1].id, brand_id: brand_id(n, brands_men, 4), 
+                           price: 54 * n, photo: 'shirts_small_3.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'shirts_3.jpg', 'shirts_small_3.jpg'
+
+  product = Product.create(name: 'Letter and Badge Print Shirt Collar Long Sleeve Slimming',
+                           category_id: categories[1].id, brand_id: brand_id(n, brands_men, 4), 
+                           price: 54 * n, photo: 'shirts_small_4.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'shirts_4.jpg', 'shirts_small_4.jpg'
+
+  product = Product.create(name: 'Turn-Down Collar Star Pattern Lining Long Sleeve',
+                           category_id: categories[1].id, brand_id: brand_id(n, brands_men, 5), 
+                           price: 54 * n, photo: 'shirts_small_5.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'shirts_5.jpg', 'shirts_small_5.jpg'
 
 
+  product = Product.create(name: 'Special Back Colorized Stripes Spliced One Patch Pocket',
+                           category_id: categories[1].id, brand_id: brand_id(n, brands_men, 5), 
+                           price: 54 * n, photo: 'shirts_small_6.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'shirts_6.jpg', 'shirts_small_6.jpg'
 
 
+  #Second Shirts
+  product = Product.create(name: 'Turn-Down Collar Star Pattern Lining Long Sleeve',
+                           category_id: categories[1].id, brand_id: brands_men[8].id, 
+                           price: 54 * n, photo: 'shirts_small_5.jpg',
+                           description: description_product)
 
-# 1.upto(20) do |n|
-#   product = Product.create(name: 'Accessories',description: 'Accessories', category_id: categories[1].id, brand_id: brands[0].id, price: 50 * n, photo: 'w_pic1.jpg')
+  add_photo product.photos, 'shirts_5.jpg', 'shirts_small_5.jpg'
 
-#   product.photos.create(orig: '2.jpg', large: '2.jpg', small: '1.jpg')
-#   product.photos.create(orig: '0001-1.jpg', large: 'large/0001-1.jpg', small: 'small/0001-1.jpg')
-#   product.photos.create(orig: '0001-3.jpg', large: 'large/0001-3.jpg', small: 'small/0001-3.jpg')
-#   product.photos.create(orig: '0001-4.jpg', large: 'large/0001-4.jpg', small: 'small/0001-4.jpg')
-#   product.photos.create(orig: '0001-5.jpg', large: 'large/0001-5.jpg', small: 'small/0001-5.jpg')
-# end
+  product = Product.create(name: 'Letter and Badge Print Shirt Collar Long Sleeve Slimming',
+                           category_id: categories[1].id, brand_id: brands_men[8].id, 
+                           price: 54 * n, photo: 'shirts_small_4.jpg',
+                           description: description_product)
 
-# 1.upto(30) do |n|
-#   product = Product.create(name: 'Wallets',description: 'Wallets', category_id: categories[2].id, brand_id: brands[0].id, price: 50 * n, photo: 'w_pic1.jpg')
+  add_photo product.photos, 'shirts_4.jpg', 'shirts_small_4.jpg'
 
-#   product.photos.create(orig: '0001-2.jpg', large: 'large/0001-2.jpg', small: 'small/0001-2.jpg')
-#   product.photos.create(orig: '0001-1.jpg', large: 'large/0001-1.jpg', small: 'small/0001-1.jpg')
-#   product.photos.create(orig: '0001-3.jpg', large: 'large/0001-3.jpg', small: 'small/0001-3.jpg')
-#   product.photos.create(orig: '0001-4.jpg', large: 'large/0001-4.jpg', small: 'small/0001-4.jpg')
-#   product.photos.create(orig: '0001-5.jpg', large: 'large/0001-5.jpg', small: 'small/0001-5.jpg')
-# end
+  product = Product.create(name: 'Special Back Colorized Stripes Spliced One Patch Pocket',
+                           category_id: categories[1].id, brand_id: brands_men[8].id, 
+                           price: 54 * n, photo: 'shirts_small_6.jpg',
+                           description: description_product)
 
-# 1.upto(20) do |n|
-#   product = Product.create(name: 'Shoes',description: 'Shoes', category_id: categories[3].id, brand_id: brands[0].id, price: 50 * n, photo: 'w_pic1.jpg')
+  add_photo product.photos, 'shirts_6.jpg', 'shirts_small_6.jpg'
 
-#   product.photos.create(orig: '0001-2.jpg', large: 'large/0001-2.jpg', small: 'small/0001-2.jpg')
-#   product.photos.create(orig: '0001-1.jpg', large: 'large/0001-1.jpg', small: 'small/0001-1.jpg')
-#   product.photos.create(orig: '0001-3.jpg', large: 'large/0001-3.jpg', small: 'small/0001-3.jpg')
-#   product.photos.create(orig: '0001-4.jpg', large: 'large/0001-4.jpg', small: 'small/0001-4.jpg')
-#   product.photos.create(orig: '0001-5.jpg', large: 'large/0001-5.jpg', small: 'small/0001-5.jpg')
-# end
+  product = Product.create(name: 'Slimming Trendy Turn-down Collar Checked Print Splicing',
+                           category_id: categories[1].id, brand_id: brands_men[8].id, 
+                           price: 54 * n, photo: 'shirts_small_3.jpg',
+                           description: description_product)
 
-# 1.upto(20) do |n|
-#   product = Product.create(name: 'Shirts',description: 'Shirts', category_id: categories[4].id, brand_id: brands[0].id, price: 50 * n, photo: 'w_pic1.jpg')
+  add_photo product.photos, 'shirts_3.jpg', 'shirts_small_3.jpg'
 
-#   product.photos.create(orig: '0001-2.jpg', large: 'large/0001-2.jpg', small: 'small/0001-2.jpg')
-#   product.photos.create(orig: '0001-1.jpg', large: 'large/0001-1.jpg', small: 'small/0001-1.jpg')
-#   product.photos.create(orig: '0001-3.jpg', large: 'large/0001-3.jpg', small: 'small/0001-3.jpg')
-#   product.photos.create(orig: '0001-4.jpg', large: 'large/0001-4.jpg', small: 'small/0001-4.jpg')
-#   product.photos.create(orig: '0001-5.jpg', large: 'large/0001-5.jpg', small: 'small/0001-5.jpg')
-# end
+  product = Product.create(name: 'Vogue Shirt Collar Abstract Totem Print Color Block Slimming',
+                           category_id: categories[1].id, brand_id: brands_men[8].id, 
+                           price: 54 * n, photo: 'shirts_small_1.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'shirts_1.jpg', 'shirts_small_1.jpg'
+
+  product = Product.create(name: 'Modern Style Shirt Collar Color Block Totem Print Spliced',
+                           category_id: categories[1].id, brand_id: brands_men[8].id, 
+                           price: 54 * n, photo: 'shirts_small_2.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'shirts_2.jpg', 'shirts_small_2.jpg'
+end
+
+
+# Shoes Men
+1.upto(2) do |n|
+  # First Shoes
+  product = Product.create(name: 'Preppy Style Men\'s Athletic Shoes With Color Block and Lace-Up Design',
+                           category_id: categories[2].id, brand_id: brand_id(n, brands_men, 6), 
+                           price: 54 * n, photo: 'shoes_small_1.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'shoes_1.jpg', 'shoes_small_1.jpg'
+
+  product = Product.create(name: 'Fashionable Men\'s Athletic Shoes With Color Matching',
+                           category_id: categories[2].id, brand_id: brand_id(n, brands_men, 6), 
+                           price: 54 * n, photo: 'shoes_small_2.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'shoes_2.jpg', 'shoes_small_2.jpg'
+
+  product = Product.create(name: 'Stylish Men\'s Formals Shoes With Stone Pattern',
+                           category_id: categories[2].id, brand_id: brand_id(n, brands_men, 7), 
+                           price: 54 * n, photo: 'shoes_small_3.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'shoes_3.jpg', 'shoes_small_3.jpg'
+
+  product = Product.create(name: 'Stylish Men\'s Formal Shoes With Crocodile Print',
+                           category_id: categories[2].id, brand_id: brand_id(n, brands_men, 7), 
+                           price: 54 * n, photo: 'shoes_small_4.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'shoes_4.jpg', 'shoes_small_4.jpg'
+
+  product = Product.create(name: 'Trendy Men\'s Athletic Shoes With Color Block',
+                           category_id: categories[2].id, brand_id: brand_id(n, brands_men, 0), 
+                           price: 54 * n, photo: 'shoes_small_5.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'shoes_5.jpg', 'shoes_small_5.jpg'
+
+  product = Product.create(name: 'Trendy Men\'s Boots With Embroidery and Stitching Design',
+                           category_id: categories[2].id, brand_id: brand_id(n, brands_men, 1), 
+                           price: 54 * n, photo: 'shoes_small_6.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'shoes_6.jpg', 'shoes_small_6.jpg'
+
+  #Second Shoes
+  product = Product.create(name: 'Trendy Men\'s Athletic Shoes With Color Block',
+                           category_id: categories[2].id, brand_id: brands_men[8].id, 
+                           price: 54 * n, photo: 'shoes_small_5.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'shoes_5.jpg', 'shoes_small_5.jpg'
+
+  product = Product.create(name: 'Stylish Men\'s Formal Shoes With Crocodile Print',
+                           category_id: categories[2].id, brand_id: brands_men[8].id, 
+                           price: 54 * n, photo: 'shoes_small_4.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'shoes_4.jpg', 'shoes_small_4.jpg'
+
+  product = Product.create(name: 'Trendy Men\'s Boots With Embroidery and Stitching Design',
+                           category_id: categories[2].id, brand_id: brands_men[8].id, 
+                           price: 54 * n, photo: 'shoes_small_6.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'shoes_6.jpg', 'shoes_small_6.jpg'
+
+  product = Product.create(name: 'Stylish Men\'s Formals Shoes With Stone Pattern',
+                           category_id: categories[2].id, brand_id: brands_men[8].id, 
+                           price: 54 * n, photo: 'shoes_small_3.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'shoes_3.jpg', 'shoes_small_3.jpg'
+
+  product = Product.create(name: 'Preppy Style Men\'s Athletic Shoes With Color Block and Lace-Up Design',
+                           category_id: categories[2].id, brand_id: brands_men[8].id, 
+                           price: 54 * n, photo: 'shoes_small_1.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'shoes_1.jpg', 'shoes_small_1.jpg'
+
+  product = Product.create(name: 'Fashionable Men\'s Athletic Shoes With Color Matching',
+                           category_id: categories[2].id, brand_id: brands_men[8].id, 
+                           price: 54 * n, photo: 'shoes_small_2.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'shoes_2.jpg', 'shoes_small_2.jpg'
+end
+
+
+# Dresses Women
+1.upto(2) do |n|
+  # First Dresses
+  product = Product.create(name: 'Fashionable Cap Sleeve Round Collar Lace A-Line',
+                           category_id: categories[4].id, brand_id: brand_id(n, brands_women, 6), 
+                           price: 54 * n, photo: 'dresses_small_1.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'dresses_1.jpg', 'dresses_small_1.jpg'
+
+  product = Product.create(name: 'Retro Women\'s Sweetheart Neck Solid Color Sleeveless Dress',
+                           category_id: categories[4].id, brand_id: brand_id(n, brands_women, 7), 
+                           price: 54 * n, photo: 'dresses_small_2.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'dresses_2.jpg', 'dresses_small_2.jpg'
+
+  product = Product.create(name: 'Vintage Scoop Collar Short Sleeve Pure Color Cut Out Lace',
+                           category_id: categories[4].id, brand_id: brand_id(n, brands_women, 0), 
+                           price: 54 * n, photo: 'dresses_small_3.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'dresses_3.jpg', 'dresses_small_3.jpg'
+
+  product = Product.create(name: 'Vintage Turn-Down Collar Sleeveless Solid Color Bowknot',
+                           category_id: categories[4].id, brand_id: brand_id(n, brands_women, 1), 
+                           price: 54 * n, photo: 'dresses_small_4.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'dresses_4.jpg', 'dresses_small_4.jpg'
+
+  product = Product.create(name: 'Vintage Turn-Down Collar Sleeveless Solid Color Bowknot',
+                           category_id: categories[4].id, brand_id: brand_id(n, brands_women, 2), 
+                           price: 54 * n, photo: 'dresses_small_5.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'dresses_5.jpg', 'dresses_small_5.jpg'
+
+  product = Product.create(name: 'Solid Color Backless Elegant Sweetheart Neck Sleeveless',
+                           category_id: categories[4].id, brand_id: brand_id(n, brands_women, 3), 
+                           price: 54 * n, photo: 'dresses_small_6.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'dresses_6.jpg', 'dresses_small_6.jpg'
+
+  #Second Shoes
+  product = Product.create(name: 'Solid Color Backless Elegant Sweetheart Neck Sleeveless',
+                           category_id: categories[4].id, brand_id: brands_women[8].id, 
+                           price: 54 * n, photo: 'dresses_small_6.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'dresses_6.jpg', 'dresses_small_6.jpg'
+
+  product = Product.create(name: 'Vintage Turn-Down Collar Sleeveless Solid Color Bowknot',
+                           category_id: categories[4].id, brand_id: brands_women[8].id, 
+                           price: 54 * n, photo: 'dresses_small_4.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'dresses_4.jpg', 'dresses_small_4.jpg'
+
+  product = Product.create(name: 'Vintage Turn-Down Collar Sleeveless Solid Color Bowknot',
+                           category_id: categories[4].id, brand_id: brands_women[8].id, 
+                           price: 54 * n, photo: 'dresses_small_5.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'dresses_5.jpg', 'dresses_small_5.jpg'
+
+  product = Product.create(name: 'Vintage Scoop Collar Short Sleeve Pure Color Cut Out Lace',
+                           category_id: categories[4].id, brand_id: brands_women[8].id, 
+                           price: 54 * n, photo: 'dresses_small_3.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'dresses_3.jpg', 'dresses_small_3.jpg'
+
+  product = Product.create(name: 'Fashionable Cap Sleeve Round Collar Lace A-Line',
+                           category_id: categories[4].id, brand_id: brands_women[8].id, 
+                           price: 54 * n, photo: 'dresses_small_1.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'dresses_1.jpg', 'dresses_small_1.jpg'
+
+  product = Product.create(name: 'Retro Women\'s Sweetheart Neck Solid Color Sleeveless Dress',
+                           category_id: categories[4].id, brand_id: brands_women[8].id, 
+                           price: 54 * n, photo: 'dresses_small_2.jpg',
+                           description: description_product)
+
+  add_photo product.photos, 'dresses_2.jpg', 'dresses_small_2.jpg'
+end

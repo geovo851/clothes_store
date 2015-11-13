@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
   get 'store/cart/:id' => 'store#cart', as: 'store_cart'
   get 'search/:id' => 'store#search_products', as: 'store_search_products'
+  get 'search_brand_products/:id' => 'store#search_brand_products', as: 'store_search_brand_products'
   get 'product/:id' => 'store#product', as: 'store_product'
 
   root 'store#index'

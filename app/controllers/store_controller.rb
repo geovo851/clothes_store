@@ -25,10 +25,20 @@ class StoreController < ApplicationController
   end
 
   def search_products
-    @products = Product.where(category_id: params[:id]).page(params[:page]).per(6)
+    @products = Product.where(category_id: params[:id]).order(:id).page(params[:page]).per(6)
 
     @category = Category.find(params[:id])
     @category_id = "category_#{params[:id]}"
+
+    respond_to do |format|
+      format.html
+      format.js {}
+    end
+  end
+
+  def search_brand_products
+    @products = Product.where(brand_id: params[:id]).order(:id).page(params[:page]).per(6)
+    @brand = Brand.find(params[:id])
 
     respond_to do |format|
       format.html

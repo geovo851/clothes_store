@@ -7,53 +7,41 @@
       <div class="grid1_of_4">
         <h4>featured sale</h4>
         <ul class="f_nav">
-          <li><a href="">alexis Hudson</a></li>
-          <li><a href="">american apparel</a></li>
-          <li><a href="">ben sherman</a></li>
-          <li><a href="">big buddha</a></li>
-          <li><a href="">channel</a></li>
-          <li><a href="">christian audigier</a></li>
-          <li><a href="">coach</a></li>
-          <li><a href="">cole haan</a></li>
+          <% footer_sale.each do |b| %>
+            <li>
+              <%= link_to b.title, store_search_brand_products_path(b.id) %>
+            </li>
+          <% end %>
         </ul>
       </div>
       <div class="grid1_of_4">
         <h4>men's brands</h4>
         <ul class="f_nav">
-          <li><a href="">alexis Hudson</a></li>
-          <li><a href="">american apparel</a></li>
-          <li><a href="">ben sherman</a></li>
-          <li><a href="">big buddha</a></li>
-          <li><a href="">channel</a></li>
-          <li><a href="">christian audigier</a></li>
-          <li><a href="">coach</a></li>
-          <li><a href="">cole haan</a></li>
+          <% footer_brands_men.each do |b| %>
+            <li>
+              <%= link_to b.title, store_search_brand_products_path(b.id) %>
+            </li>
+          <% end %>
         </ul>
       </div>
       <div class="grid1_of_4">
         <h4>women's brands</h4>
         <ul class="f_nav">
-          <li><a href="">alexis Hudson</a></li>
-          <li><a href="">american apparel</a></li>
-          <li><a href="">ben sherman</a></li>
-          <li><a href="">big buddha</a></li>
-          <li><a href="">channel</a></li>
-          <li><a href="">christian audigier</a></li>
-          <li><a href="">coach</a></li>
-          <li><a href="">cole haan</a></li>
+          <% footer_brands_women.each do |b| %>
+            <li>
+              <%= link_to b.title, store_search_brand_products_path(b.id) %>
+            </li>
+          <% end %>
         </ul>
       </div>
       <div class="grid1_of_4">
         <h4>quick links</h4>
         <ul class="f_nav">
-          <li><a href="">alexis Hudson</a></li>
-          <li><a href="">american apparel</a></li>
-          <li><a href="">ben sherman</a></li>
-          <li><a href="">big buddha</a></li>
-          <li><a href="">channel</a></li>
-          <li><a href="">christian audigier</a></li>
-          <li><a href="">coach</a></li>
-          <li><a href="">cole haan</a></li>
+          <% footer_quick_links.each do |b| %>
+            <li>
+              <%= link_to b.title, store_search_brand_products_path(b.id) %>
+            </li>
+          <% end %>
         </ul>
       </div>
       <div class="clear"></div>
