@@ -59,5 +59,6 @@ class StoreController < ApplicationController
   end
 
   def services
+    @best_sellers = BestSeller.find_product(10)
   end
 end
