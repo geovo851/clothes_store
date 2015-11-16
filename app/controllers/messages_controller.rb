@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  include CurrentCart
+  before_action :set_cart
 
   def create
     @message = Message.new(message_params)
