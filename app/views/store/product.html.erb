@@ -22,18 +22,20 @@
               <div class="available">
                 <h4>Available Options :</h4>
                 <ul>
-                  <li>Color:
-                    <%= select_tag("Color", options_for_select(Product::Colors, Product::Colors[0])) %>
-                  </li>
-                  <li>Size:
-                    <%= select_tag("Size", options_for_select(Product::Sizes, Product::Sizes[0])) %>
-                  </li>
+                  <%= form_for @products_order do |f| %>
+                    <li>Color: <%= f.collection_select(:color_id, @colors, 
+                          :id, :title, {selected: @colors[0]}, class: 'select-color') %>
+                    </li>
+                    <li>Size: <%= f.collection_select(:size_id, @sizes, 
+                                      :id, :title, {selected: @sizes[0]}) %>
+                    </li>
+                    <%= hidden_field_tag(:product_id, @product.id) %>
+                    <%= hidden_field_tag(:price, @product.price) %>
+                    <div class="btn_add_cart">
+                      <%= f.submit 'Add to cart', class: 'btn_add_cart' %>
+                    </div>
+                  <% end %>
                 </ul>
-                <div class="btn_form">
-                  <form>
-                    <input type="submit" value="add to cart" title="" />
-                  </form>
-                </div>
                 <div class="clear"></div>
               </div>
               <div class="share-desc">

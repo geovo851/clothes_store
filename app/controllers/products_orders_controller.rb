@@ -1,6 +1,6 @@
 class ProductsOrdersController < ApplicationController
-  # filter_resource_access
   include CurrentCart
+  before_action :set_cart
 
   def new
     @products_order = ProductsOrder.new
@@ -9,63 +9,28 @@ class ProductsOrdersController < ApplicationController
   end
 
   def create
+    @cart.total_sum += params[:price].to_f
 
-    if params[:order_id]
+    @products_orders = @cart.products_orders.find_by(product_id: params[:product_id],
+                              color_id: params[:products_order][:color_id],
+                              size_id: params[:products_order][:size_id])
 
-      product = Product.find_by(id: params[:products_order][:product_id])
-      @order = Order.find(params[:order_id])
-
-      @products_orders = @order.products_orders.find_by(product_id: product.id)
-      
-      if @products_orders
-        @products_orders.quantity += params[:products_order][:quantity].to_f
-      else
-        @products_orders = @order.products_orders.build(product_id: product.id,
-                                     quantity: params[:products_order][:quantity],
-                                     price: product.price)
-      end
-      
-      @order.total_sum ||= 0
-      @order.total_sum += (product.price * params[:products_order][:quantity].to_f)
-
-      if @products_orders.save && @order.save
-        redirect_to order_path(@products_orders.order_id)
-      else
-        flash[:error] = "Could not add to order."
-        render :back
-      end
-
+    if @products_orders
+      @products_orders.quantity += 1
     else
-
-      if user_signed_in?
-        set_cart
-        @cart.total_sum ||= 0
-        @cart.total_sum += params[:price].to_f
-
-        product = Product.find_by(id: params[:product_id])
-
-        @products_orders = @cart.products_orders.find_by(product_id: product.id)
-        
-        if @products_orders
-          @products_orders.quantity += 1
-        else
-          @products_orders = @cart.products_orders.build(product_id: product.id,
-                                       quantity: 1, price: params[:price])
-        end
-
-        if @products_orders.save && @cart.save
-          redirect_to  store_cart_path(@products_orders.order_id)
-        else
-          flash[:error] = "Could not add to cart."
-          render :back
-        end
-      else
-        flash[:error] = "You need sign in."
-        redirect_to new_user_session_path
-      end
-
+      @products_orders = @cart.products_orders.build(product_id: params[:product_id],
+                                   quantity: 1, price: params[:price],
+                                   color_id: params[:products_order][:color_id],
+                                   size_id: params[:products_order][:size_id])
     end
 
+    if @products_orders.save && @cart.save
+      flash[:success] = "Product added to cart."
+      redirect_to store_product_path(params[:product_id])
+    else
+      flash[:error] = "Could not add to cart."
+      render :back
+    end
   end
 
   def edit
@@ -91,7 +56,7 @@ class ProductsOrdersController < ApplicationController
     @order.total_sum += @products_order.price * @products_order.quantity
 
     if @products_order.save && @order.save
-      redirect_to order_path(@products_order.order_id)
+      redirect_to root_path
     else
       flash[:error] = "Could not edit to order."
       render 'edit'
@@ -119,15 +84,13 @@ class ProductsOrdersController < ApplicationController
 
       redirect_to order_path(@order.id)
     else
-      set_cart
-
       @products_order = @cart.products_orders.find(params[:id])
       @cart.total_sum -= (@products_order.price * @products_order.quantity)
       @cart.save
       
       @products_order.destroy
 
-      redirect_to store_cart_path(@cart.id)
+      redirect_to root_path
     end
   end
 end

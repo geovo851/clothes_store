@@ -1,6 +1,5 @@
 class CartsController < ApplicationController
-  # filter_resource_access
-  
+
   def index
     @carts = Order.where(order: false).page(params[:page]).per(10)
 

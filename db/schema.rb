@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112185743) do
+ActiveRecord::Schema.define(version: 20151115221844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,16 +49,43 @@ ActiveRecord::Schema.define(version: 20151112185743) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "best_sellers", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "quantity",   default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "best_sellers", ["product_id"], name: "index_best_sellers_on_product_id", using: :btree
+
   create_table "brands", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.string   "gender"
+    t.integer  "gender_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
+  add_index "brands", ["gender_id"], name: "index_brands_on_gender_id", using: :btree
+
+  create_table "carousel_products", force: :cascade do |t|
+    t.integer  "product_id"
+    t.string   "photo"
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "carousel_products", ["product_id"], name: "index_carousel_products_on_product_id", using: :btree
+
   create_table "categories", force: :cascade do |t|
-    t.string   "category"
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "colors", force: :cascade do |t|
+    t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -74,6 +101,12 @@ ActiveRecord::Schema.define(version: 20151112185743) do
   add_index "comments", ["product_id"], name: "index_comments_on_product_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
+  create_table "genders", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "messages", force: :cascade do |t|
     t.string   "sender"
     t.string   "name"
@@ -83,18 +116,17 @@ ActiveRecord::Schema.define(version: 20151112185743) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer  "user_id"
     t.string   "status"
     t.integer  "payment_id"
     t.text     "delivary_adress"
-    t.boolean  "order"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.float    "total_sum"
+    t.boolean  "order",                                    default: false
+    t.integer  "phone_number"
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
+    t.decimal  "total_sum",       precision: 15, scale: 2, default: 0.0
   end
 
   add_index "orders", ["payment_id"], name: "index_orders_on_payment_id", using: :btree
-  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "payments", force: :cascade do |t|
     t.string   "type_of_paiment"
@@ -131,20 +163,41 @@ ActiveRecord::Schema.define(version: 20151112185743) do
   create_table "products_orders", force: :cascade do |t|
     t.integer  "order_id"
     t.integer  "product_id"
-    t.float    "quantity"
-    t.float    "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.float    "quantity",   default: 0.0
+    t.float    "price",      default: 0.0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "color_id"
+    t.integer  "size_id"
   end
 
+  add_index "products_orders", ["color_id"], name: "index_products_orders_on_color_id", using: :btree
   add_index "products_orders", ["order_id"], name: "index_products_orders_on_order_id", using: :btree
   add_index "products_orders", ["product_id"], name: "index_products_orders_on_product_id", using: :btree
+  add_index "products_orders", ["size_id"], name: "index_products_orders_on_size_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "sizes", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "slider_products", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "photo"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "slider_products", ["product_id"], name: "index_slider_products_on_product_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -173,14 +226,19 @@ ActiveRecord::Schema.define(version: 20151112185743) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
 
+  add_foreign_key "best_sellers", "products"
+  add_foreign_key "brands", "genders"
+  add_foreign_key "carousel_products", "products"
   add_foreign_key "comments", "products"
   add_foreign_key "comments", "users"
   add_foreign_key "orders", "payments"
-  add_foreign_key "orders", "users"
   add_foreign_key "photos", "products"
   add_foreign_key "products", "brands"
   add_foreign_key "products", "categories"
+  add_foreign_key "products_orders", "colors"
   add_foreign_key "products_orders", "orders"
   add_foreign_key "products_orders", "products"
+  add_foreign_key "products_orders", "sizes"
+  add_foreign_key "slider_products", "products"
   add_foreign_key "users", "roles"
 end

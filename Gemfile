@@ -57,12 +57,4 @@ gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
 
-# gem 'will_paginate'
-# gem 'bootstrap-will_paginate'
-
-gem 'declarative_authorization', github: "stffn/declarative_authorization"
-
-# gem 'kaminari'
-gem 'tinymce-rails'
-
 gem 'activeadmin', '1.0.0.pre1'

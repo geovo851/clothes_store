@@ -1,23 +1,21 @@
 class StoreController < ApplicationController
-  # filter_access_to :all
   include CurrentCart
+  before_action :set_cart
 
   def index
-    @products = Product.page(params[:page]).per(10)
     @categories = Category.all
-    
-    count_in_cart
-
-    respond_to do |format|
-      format.html
-      format.js {}
-    end
+    @carousel_products = CarouselProduct.all
+    @slider_product = SliderProduct.all
+    @products = BestSeller.find_product(6)
   end
-  
+
   def product
     @product = Product.find(params[:id])
-    count_in_cart
     @categories = Category.all
+    @colors = Color.all
+    @sizes = Size.all
+    @products_order = ProductsOrder.new
+    @best_sellers = BestSeller.find_product(10)
   end
   
   def cart
@@ -46,21 +44,20 @@ class StoreController < ApplicationController
     end
   end
 
+  def search
+    @products = Product.search(params[:search_text], params[:page])
+
+    respond_to do |format|
+      format.html
+      format.js {}
+    end
+  end
+
   def contact
     @categories = Category.all
-    count_in_cart
     @message = Message.new
   end
 
   def services
   end
-
-  private
-
-    def count_in_cart
-      if user_signed_in?
-        set_cart
-        @count_in_cart = @cart.products_orders.count
-      end
-    end
 end

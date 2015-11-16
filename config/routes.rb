@@ -10,11 +10,6 @@ Rails.application.routes.draw do
 
   resources :carts
   get 'carts' => 'orders#carts', as: 'orders_carts'
-  
-  resources :products
-  resources :categories
-
-  get 'admins' => 'admins#index', as: 'admins'
 
   devise_for :users
 
@@ -25,6 +20,7 @@ Rails.application.routes.draw do
   get 'search/:id' => 'store#search_products', as: 'store_search_products'
   get 'search_brand_products/:id' => 'store#search_brand_products', as: 'store_search_brand_products'
   get 'product/:id' => 'store#product', as: 'store_product'
+  match 'search' => 'store#search', as: 'store_search', via: [:get, :post]
 
   root 'store#index'
 end

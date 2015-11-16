@@ -1,6 +1,5 @@
 class OrdersController < ApplicationController
   include CurrentCart
-  # filter_resource_access :attribute_check => true
 
   def index
     @orders = Order.where(order: true).page(params[:page]).per(10)

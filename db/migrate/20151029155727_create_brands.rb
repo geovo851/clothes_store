@@ -3,7 +3,7 @@ class CreateBrands < ActiveRecord::Migration
     create_table :brands do |t|
       t.string :title
       t.text :description
-      t.string :gender
+      t.references :gender, index: true, foreign_key: true
 
       t.timestamps null: false
     end
