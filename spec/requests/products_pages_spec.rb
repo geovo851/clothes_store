@@ -5,17 +5,39 @@ describe 'Products pages' do
   subject { page }
 
   shared_examples_for 'all static pages' do
-    it { should have_selector('h2', text: heading) }
-    it { should have_title(page_title) }
+    it { should have_selector(selector, text: heading) }
+    it { should have_title("#{page_title} | Clothes store") }
   end
 
   describe 'Home page' do
     before { visit root_path }
     let(:heading)    { 'featured products' }
-    let(:page_title) { 'Home | Clothes store' }
+    let(:page_title) { 'Home' }
+    let(:selector)   { 'h2' }
 
     it_should_behave_like "all static pages"
     it { should_not have_title('Contact Us |') }
+
+    describe 'services' do
+      let(:heading)    { 'Our Services' }
+      let(:page_title) { 'Services' }
+      let(:selector)   { 'h4' }
+      before { click_link 'services' }
+
+      context 'have link services' do
+        it_should_behave_like "all static pages"
+      end
+    end
+
+    describe 'contact us' do
+      let(:heading)    { 'get in touch' }
+      let(:page_title) { 'Contact Us' }
+      before { click_link 'Contact us' }
+
+      context 'have link contact us' do
+        it_should_behave_like "all static pages"
+      end
+    end
   end
 
   describe 'products' do
