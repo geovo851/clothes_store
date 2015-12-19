@@ -46,6 +46,10 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'travis'
   gem 'mailcatcher'
+  gem 'selenium-webdriver'
+  gem 'capybara'
+  gem 'guard'
+  gem 'guard-rspec', require: false
 end
 
 group :production do
