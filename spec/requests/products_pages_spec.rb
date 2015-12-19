@@ -73,7 +73,30 @@ describe 'Products pages' do
         it { expect(page).to_not have_css('.pagination') }
       end
     end
+  end
 
+  describe 'contact us' do
+    before do
+      visit root_path
+      click_link 'Contact us'
+    end
+
+    describe 'send message' do 
+      context 'when valid send message' do
+        before do
+          fill_in 'Name',   with: 'Stas'
+          fill_in 'E-mail', with: 'wet@gmail.com'
+          fill_in 'Subject',   with: 'Hi. Good store!!!'
+          click_button "Send"
+        end
+        it { expect(page).to have_css('.alert-success', text: 'Your message sent.') }
+      end
+
+      context 'when invalid send message' do
+        before { click_button "Send" }
+        it { expect(page).to_not have_css('.alert-success', text: 'Your message sent.') }
+      end
+    end
   end
 
 end
