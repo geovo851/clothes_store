@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :category do
-    title "Michael Hartl5"
+    title 'Men\'s Outerwear'
   end
 end
