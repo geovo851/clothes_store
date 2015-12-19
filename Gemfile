@@ -50,6 +50,8 @@ group :development, :test do
   gem 'capybara'
   gem 'guard'
   gem 'guard-rspec', require: false
+  gem 'factory_girl_rails'
+  gem 'pry'
 end
 
 group :production do
